@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Register page</h1>
+    <form method="post">
+        {% csrf_token %}
+    <label for="Num1">Enter Username:</label>
+    <input type="text" name="Num1" placeholder="Enter Username:" required><br><br>
+    <label for="Num2">Enter password:</label>
+    <input type="password" name="Num2" placeholder="Enter password:" required><br><br>
+    <label for="Num2">Re-enter password:</label>
+    <input type="password" name="Num3" placeholder="Enter confirm password:" required><br><br>
+    <button type = "submit">Login</button>
+    </form>
+
+    Already have an account href?<a href="{% url 'login_page' %}">Login</a>
+</body>
+</html>
