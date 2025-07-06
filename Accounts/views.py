@@ -14,6 +14,7 @@ def login_page(request):
     return render(request,'login.html')
 
 def register_page(request):
+    messages=None
     if request.method == 'POST':
         username = request.POST.get('Num1')
         password = request.POST.get('Num2')
