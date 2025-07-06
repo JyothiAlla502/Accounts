@@ -20,7 +20,12 @@ def register_page(request):
         conpassword = request.POST.get('Num3')
         if password!=conpassword:
             return render(request,'register.html',{'error':'error'})
+        if User.objects.filter(username=username).exists():
+            messages.error(request,"Username already taken.")
+            return render(request,'register.html')
         user = User.objects.create_user(username = username,password = password)
+        user.save()
+        message.success(request,'Account created successfully')
         return redirect('login_page')
     return render(request,'register.html')
 def logout_page(request):
