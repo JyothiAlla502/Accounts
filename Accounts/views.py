@@ -14,16 +14,12 @@ def login_page(request):
     return render(request,'login.html')
 
 def register_page(request):
-    messages=None
     if request.method == 'POST':
         username = request.POST.get('Num1')
         password = request.POST.get('Num2')
         conpassword = request.POST.get('Num3')
         if password!=conpassword:
             return render(request,'register.html',{'error':'error'})
-        if User.objects.filter(username=username).exists():
-            messages.error(request,"Username already taken.")
-            return render(request,'register.html')
         user = User.objects.create_user(username = username,password = password)
         user.save()
         message.success(request,'Account created successfully')
